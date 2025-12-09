@@ -235,52 +235,162 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+// #include<ctype.h>
+
+// int main()
+// {
+//     int bakiye = 1000, miktar;
+//     char islem;
+
+//     do
+//     {
+//         printf("\n P - Para Cekimi \n W - Para Yatirma \n B - Bakiye Sorgulama \n E - Cikis\n\n Ne islem yapmak istersiniz: ");
+//         scanf(" %c", &islem);
+//         islem = toupper(islem);
+//         switch (islem)
+//         {
+//         case 'P':
+//             printf("\nNe kadar para cekmek istersiniz: ");
+//             scanf("%d", &miktar);
+//             if (miktar > bakiye)
+//             {
+//                 printf("\nHesabinizdaki para yetersiz. Hesabinizda %d tl var \n", bakiye);
+//             }
+//             else
+//             {
+//                 bakiye -= miktar;
+//                 printf("\n%d tl miktarinda para cektiniz. Hesabinizda kalan para miktari: %d tl\n", miktar, bakiye);
+//             }
+//             break;
+
+//         case 'W':
+//             printf("\nNe kadar miktarda para yatirmak istersiniz: ");
+//             scanf("%d", &miktar);
+//             bakiye += miktar;
+//             printf("\nYatirdiginiz para miktari: %d tl. Hesabinizdaki guncel para miktari: %d tl\n", miktar, bakiye);
+//             break;
+
+//         case 'B':
+//             printf("\nHesabinizda bulunan para miktari: %d tl\n", bakiye);
+//             break;
+//         case 'E':
+//         break;
+
+//         default:
+//             printf("\nBoyle bir islem yok. Tekrar deneyin!\n");
+//             break;
+//         }
+
+//     } while (islem != 'E');
+//     printf("\nIsleminiz icin tesekkurler. Size iyi gunler dileriz!");
+// }
+
+// #include <stdio.h>
+// #include <stdbool.h>
+// int main()
+// {
+//     int baslangic, bitis;
+//     bool asalmi;
+
+//     printf("Baslangic Sayiyi giriniz: ");
+//     scanf("%d", &baslangic);
+//     printf("Bitis Sayiyi giriniz: ");
+//     scanf("%d", &bitis);
+
+//     if (baslangic < 2)
+//     {
+//         baslangic = 2;
+//     }
+
+//     for (int i = baslangic; i <= bitis; i++)
+//     {
+//         asalmi = true;
+//         for (int j = 2; j < i; j++)
+//         {
+//             if (i % j == 0)
+//             {
+//                 asalmi = false;
+//                 break;
+//             }
+//         }
+//         if (asalmi)
+//         {
+//             printf("%d\n", i);
+//         }
+//     }
+// }
+
 #include <stdio.h>
-#include<ctype.h>
 
 int main()
 {
-    int bakiye = 1000, miktar;
-    char islem;
+    int sifre, sabitSifre = 1234, secim;
 
     do
     {
-        printf("\n P - Para Cekimi \n W - Para Yatirma \n B - Bakiye Sorgulama \n E - Cikis\n\n Ne islem yapmak istersiniz: ");
-        scanf(" %c", &islem);
-        islem = toupper(islem);
-        switch (islem)
+        printf("Sifrenizi girin: ");
+        scanf("%d", &sifre);
+        if (sifre != sabitSifre)
         {
-        case 'P':
-            printf("\nNe kadar para cekmek istersiniz: ");
-            scanf("%d", &miktar);
-            if (miktar > bakiye)
+            printf("\nHatali sifre. Tekrar deneyin!\n\n");
+        }
+
+    } while (sifre != sabitSifre);
+    printf("\nSifreniz dogru!\n");
+    do
+    {
+        printf("\n* deseni icin - 1\n# deseni icin - 2\n\nHangi deseni cizmek istersiniz: ");
+        scanf("%d", &secim);
+
+        switch (secim)
+        {
+        case 1:
+            for (int i = 1; i <= 5; i++)
             {
-                printf("\nHesabinizdaki para yetersiz. Hesabinizda %d tl var \n", bakiye);
-            }
-            else
-            {
-                bakiye -= miktar;
-                printf("\n%d tl miktarinda para cektiniz. Hesabinizda kalan para miktari: %d tl\n", miktar, bakiye);
+                for (int j = 1; j <= 5; j++)
+                {
+                    printf("* ");
+                }
+                printf("\n");
             }
             break;
 
-        case 'W':
-            printf("\nNe kadar miktarda para yatirmak istersiniz: ");
-            scanf("%d", &miktar);
-            bakiye += miktar;
-            printf("\nYatirdiginiz para miktari: %d tl. Hesabinizdaki guncel para miktari: %d tl\n", miktar, bakiye);
-            break;
+            // case 2:
+            //     int yildiz = 5;
+            //     for (int i = 1; i <= 5; i++)
+            //     {
+            //         for (int j = 1; j <= 5; j++)
+            //         {
+            //             if (j >= yildiz)
+            //             {
+            //                 printf(" # ");
+            //             }
+            //             else
+            //             {
+            //                 printf("   ");
+            //             }
+            //         }
+            //         yildiz--;
+            //         printf("\n");
+            //     }
+            //     break;
 
-        case 'B':
-            printf("\nHesabinizda bulunan para miktari: %d tl\n", bakiye);
+        case 2: // Üçgen Deseni için basit ve temiz çözüm
+            for (int i = 1; i <= 5; i++)
+            {
+                // İç döngüyü, i kadar çalışacak şekilde ayarla
+                for (int j = 1; j <= i; j++)
+                {
+                    printf("# ");
+                }
+                printf("\n");
+            }
             break;
-        case 'E':
-        break;
         default:
-            printf("\nBoyle bir islem yok. Tekrar deneyin!\n");
+            printf("\n2 secimden birini secin. 1 yada 2 girin!\n");
             break;
         }
 
-    } while (islem != 'E');
-    printf("\nIsleminiz icin tesekkurler. Size iyi gunler dileriz!");
+    } while (secim != 1 && secim != 2);
 }
